@@ -4,7 +4,7 @@ services: docker
 
 env:
   global:
-    - ROLE_NAME: ntp
+    - ROLE_NAME: ca-certificates
   matrix:
     - MOLECULE_DISTRO: centos7
     - MOLECULE_DISTRO: centos6
