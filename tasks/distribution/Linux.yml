@@ -1,2 +1,18 @@
 ---
 # tasks file for arillso.ca-certificates
+
+- name: 'linux : Install CA certificates packages'
+  package:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{ ca_certificates_packages }}'
+
+- name: 'linux : include tasks to install custom CA certificates'
+  include_tasks: Linux/certificate.yml
+  with_items:
+    - '{{ ca_certificates_files }}'
+  loop_control:
+    loop_var: ca_certificates_loop_install_item
+
+- name: Trigger handler
+  meta: flush_handlers

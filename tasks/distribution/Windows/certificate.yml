@@ -1,0 +1,46 @@
+---
+# tasks file for arillso.ca-certificates
+
+- name: 'windows : Fail on invalid certificate definition'
+  fail:
+    msg: "Certificate definition must contain key 'name'."
+  when: ("name" not in install_item.keys())
+  vars:
+    install_item: '{{ ca_certificates_loop_install_item }}'
+
+- name: 'windows : {{ install_item.name }} - Download certificate file'
+  win_get_url:
+    url: '{{ install_item.url }}'
+    dest: '{{ ca_certificates_root_directory }}\\{{ install_item.name }}'
+  when: ("url" in install_item.keys())
+  register: ca_certificates_register_download
+  retries: 3
+  delay: 2
+  until: ca_certificates_register_download is succeeded
+  vars:
+    install_item: '{{ ca_certificates_loop_install_item }}'
+
+- name: 'windows : {{ install_item.name }} - Copy certificate content'
+  win_copy:
+    content: '{{ install_item.content }}'
+    dest: '{{ ca_certificates_path }}/{{ install_item.name }}.pem'
+  when: ("content" in install_item.keys())
+  vars:
+    install_item: '{{ ca_certificates_loop_install_item }}'
+
+- name: 'windows : {{ install_item.name }} - Copy certificate file'
+  win_copy:
+    src: '{{ install_item.file }}'
+    dest: '{{ ca_certificates_path }}/{{ install_item.name }}.pem'
+  when: ("file" in install_item.keys())
+  vars:
+    install_item: '{{ ca_certificates_loop_install_item }}'
+
+- name: 'windows : {{ install_item.name }} - Import certificate'
+  win_certificate_store:
+    path: '{{ ca_certificates_path }}/{{ install_item.name }}.pem'
+    state: present
+    store_name: '{{ install_item.store_name | default(omit) }}'
+    store_location: '{{ install_item.store_location | default(omit) }}'
+  vars:
+    install_item: '{{ ca_certificates_loop_install_item }}'

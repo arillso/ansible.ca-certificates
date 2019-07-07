@@ -1,2 +1,5 @@
 ---
 # handlers file for arillso.ca-certificates
+
+- name: Update CA trust
+  command: '{{ ca_certificates_handler }}'

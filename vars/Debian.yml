@@ -1,2 +1,12 @@
 ---
 # vars file for arillso.ca-certificates
+
+#
+# Defaults for Debian-based Linux systems
+#
+
+# Directory where certificates should be placed
+ca_certificates_path: /usr/local/share/ca-certificates
+
+# Command to run after adding new certificates
+ca_certificates_handler: /usr/sbin/update-ca-certificates

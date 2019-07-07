@@ -1,0 +1,50 @@
+---
+# tasks file for arillso.ca-certificates
+
+- name: 'linux : Fail on invalid certificate definition'
+  fail:
+    msg: "Certificate definition must contain key 'name'."
+  when: ("name" not in install_item.keys())
+  vars:
+    install_item: '{{ ca_certificates_loop_install_item }}'
+
+- name: 'linux : {{ install_item.name }} - Copy certificate file'
+  copy:
+    src: '{{ install_item.file }}'
+    dest: '{{ ca_certificates_path }}/{{ install_item.name }}.crt'
+    owner: root
+    group: root
+    mode: 0644
+    validate: openssl x509 -inform PEM -in %s -noout
+  when: ("file" in install_item.keys())
+  notify: Update CA trust
+  vars:
+    install_item: '{{ ca_certificates_loop_install_item }}'
+
+- name: 'linux : {{ install_item.name }} - Copy certificate content'
+  copy:
+    content: '{{ install_item.content }}'
+    dest: '{{ ca_certificates_path }}/{{ install_item.name }}.pem'
+    owner: root
+    group: root
+    mode: 0644
+  when: ("content" in install_item.keys())
+  notify: Update CA trust
+  vars:
+    install_item: '{{ ca_certificates_loop_install_item }}'
+
+- name: 'linux : {{ install_item.name }} - Download certificate file'
+  get_url:
+    url: '{{ install_item.url }}'
+    dest: '{{ ca_certificates_path }}/{{ install_item.name }}.crt'
+    owner: root
+    group: root
+    mode: 0644
+  when: ("url" in install_item.keys())
+  notify: Update CA trust
+  register: ca_certificates_register_download
+  retries: 3
+  delay: 2
+  until: ca_certificates_register_download is succeeded
+  vars:
+    install_item: '{{ ca_certificates_loop_install_item }}'
