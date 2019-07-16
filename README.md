@@ -4,12 +4,12 @@
 
 ## Description
 
-With this role you can install certificates from a file or url under Windows and Linux.
+Ansible role to manage CA certificates in the Linux and Windows system trust store. It's possible to add PEM formatted certificates from the local file system, a already trusted HTTP(s) URL, from raw content or form.
 
 ## Installation
 
 ```bash
-ansible-galaxy install arillso.ca-certificates
+ansible-galaxy install arillso.ca_certificates
 ```
 
 ## Requirements
