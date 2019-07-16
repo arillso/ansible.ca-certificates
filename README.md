@@ -4,7 +4,7 @@
 
 ## Description
 
-Ansible role to manage CA certificates in the Linux and Windows system trust store. It's possible to add PEM formatted certificates from the local file system, a already trusted HTTP(s) URL, from raw content or form.
+Ansible role to manage CA certificates in the Linux and Windows system trust store. It's possible to add PEM formatted certificates from the local file system, a already trusted HTTP(s) URL, from raw content.
 
 ## Installation
 
@@ -21,7 +21,7 @@ none
 ### ca_certificates_root_directory
 
 Location where the certificates are stored under windows before
-they are imported into the certificate memory of Windows.
+they are imported into the certificate store of Windows.
 
 ```yml
 ca_certificates_root_directory: '{{ ansible_env.TMP }}'
@@ -38,7 +38,7 @@ ca_certificates_packages:
 
 ### ca_certificates_files
 
-List of CA certificates that are to be added to the certificate memory of the system. Each list element is a configuration directory that defines the source (URL, Files or Inline as variable) of the certificate. It must contain a key'name' and one of the following keys in order to use the certificate:
+List of CA certificates that are to be added to the certificate store of the system. Each list element is a configuration directory that defines the source (URL, Files or Inline as variable) of the certificate. It must contain a key'name' and one of the following keys in order to use the certificate:
 
 | Option         | Comments                                                                                                                                                                                      |
 | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
