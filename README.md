@@ -61,7 +61,7 @@ None
 ```yml
 - hosts: all
   roles:
-    - arillso.ca-certificates
+    - arillso.ca_certificates
 ```
 
 ## Changelog
