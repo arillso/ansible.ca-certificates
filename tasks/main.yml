@@ -27,7 +27,7 @@
   include_tasks: '{{ loop_distribution }}'
   with_first_found:
     - files:
-        - '{{ distribution }}-{{ distribution_verion }}.yml'
+        - '{{ distribution }}-{{ distribution_version }}.yml'
         - '{{ distribution }}-{{ distribution_major_version }}.yml'
         - '{{ distribution }}.yml'
         - '{{ ansible_os_family }}.yml'
