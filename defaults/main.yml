@@ -1,2 +1,41 @@
 ---
 # defaults file for arillso.ca-certificates
+
+# Location where the certificates are stored under windows before
+# they are imported into the certificate memory of Windows.
+ca_certificates_path: '{{ ansible_env.TMP }}'
+
+# Packages to be installed.
+ca_certificates_packages:
+  - ca-certificates
+
+# List of CA certificates that are to be added to the certificate
+# memory of the system. Each list element is a configuration
+# directory that defines the source (URL, Files or Inline as variable)
+# of the certificate. It must contain a key'name' and one of the
+# following keys in order to use the certificate:
+#
+#   file           Path to a file on the host running the Ansible playbook.
+#                  Relative file paths are related to the
+#                  role's `files/` directory.
+#   url            URL to a PEM-formatted certificate file
+#   content        Certificate inline as PEM-formatted
+#   store_name     Optional in Windows. The store name to use when importing
+#                  a certificate or searching for a certificate.
+#                  AddressBook: The X.509 certificate store for other users
+#                  AuthRoot: The X.509 certificate store for third-party
+#                  certificate authorities (CAs)
+#                  CertificateAuthority: The X.509 certificate store for
+#                  intermediate certificate authorities (CAs)
+#                  Disallowed: The X.509 certificate store
+#                  for revoked certificates
+#                  My: The X.509 certificate store for personal certificates
+#                  Root: The X.509 certificate store for trusted root
+#                  certificate authorities (CAs)
+#                  TrustedPeople: The X.509 certificate store for directly
+#                  trusted people and resources
+#                  TrustedPublisher: The X.509 certificate store for directly
+#                  trusted publishers
+#   store_location Optional in Windows. The store location to use when
+#                  importing a certificate or searching for a certificate.
+ca_certificates_files: []

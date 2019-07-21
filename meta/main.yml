@@ -1,35 +1,34 @@
 ---
-
 galaxy_info:
   role_name: ca-certificates
-  author:
-  description:
-  company:
+  author: arillso
+  description: Install certificates from a file or url under Windows and Linux.
   license: MIT
-  min_ansible_version: 2
+  min_ansible_version: 2.8
   platforms:
-    - name: Archlinux
-      versions:
-        - all
     - name: EL
       versions:
-        - 5
         - 6
+        - 7
     - name: Fedora
       versions:
-        - 16
-        - 17
-        - 18
+        - 29
     - name: Ubuntu
       versions:
-        - precise
-        - quantal
-        - raring
-        - saucy
+        - bionic
+        - cosmic
+        - disco
     - name: Debian
       versions:
-        - wheezy
+        - jessie
+        - stretch
+        - buster
+    - name: Windows
+      versions:
+        - all
 
-  galaxy_tags: []
+  galaxy_tags:
+    - ca
+    - certificates
 
 dependencies: []
