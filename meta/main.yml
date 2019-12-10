@@ -17,7 +17,6 @@ galaxy_info:
       versions:
         - bionic
         - cosmic
-        - disco
     - name: Debian
       versions:
         - jessie

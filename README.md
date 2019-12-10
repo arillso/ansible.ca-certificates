@@ -1,6 +1,6 @@
 # Ansible Role: ca-certificates
 
-[![Build Status](https://img.shields.io/travis/arillso/ansible.ca-certificates.svg?branch=master&style=popout-square)](https://travis-ci.org/arillso/ansible.ca-certificates) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=popout-square)](https://sbaerlo.ch/licence) [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-ca_certificates-blue.svg?style=popout-square)](https://galaxy.ansible.com/arillso/ca_certificates) [![Ansible Role](https://img.shields.io/ansible/role/d/id.svg?style=popout-square)](https://galaxy.ansible.com/arillso/ca_certificates)
+[![Build Status](https://img.shields.io/travis/arillso/ansible.ca-certificates.svg?branch=master&style=popout-square)](https://travis-ci.org/arillso/ansible.ca-certificates) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=popout-square)](https://sbaerlo.ch/licence) [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-ca_certificates-blue.svg?style=popout-square)](https://galaxy.ansible.com/arillso/ca_certificates) [![Ansible Role](https://img.shields.io/ansible/role/d/42098.svg?style=popout-square)](https://galaxy.ansible.com/arillso/ca_certificates)
 
 ## Description
 
@@ -64,8 +64,6 @@ None
     - arillso.ca_certificates
 ```
 
-## Changelog
-
 ## Author
 
 - [Simon Bärlocher](https://sbaerlocher.ch)
@@ -76,4 +74,4 @@ This project is under the MIT License. See the [LICENSE](https://sbaerlo.ch/lice
 
 ## Copyright
 
-(c) 2019, Arillso
+(c) 2020, Arillso
