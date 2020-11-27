@@ -24,7 +24,7 @@
 - name: 'linux : {{ install_item.name }} - Copy certificate content'
   copy:
     content: '{{ install_item.content }}'
-    dest: '{{ ca_certificates_path }}/{{ install_item.name }}.pem'
+    dest: '{{ ca_certificates_path }}/{{ install_item.name }}.crt'
     owner: root
     group: root
     mode: 0644
