@@ -1,0 +1,12 @@
+---
+# vars file for arillso.ca-certificates
+
+#
+# Defaults for RedHat-based Linux systems
+#
+
+# Directory where certificates should be placed
+ca_certificates_path: /etc/pki/ca-trust/source/anchors
+
+# Command to run after adding new certificates
+ca_certificates_handler: /usr/bin/update-ca-trust extract
